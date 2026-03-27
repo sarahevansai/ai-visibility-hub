@@ -1,154 +1,119 @@
-# 🌐 AI Visibility Hub — MVP
+# AI Visibility Hub
 
-A daily-updated, private resource for writers and content creators to master AI visibility, AEO, and GEO.
+A production-ready reference tool for creating content that gets cited by AI platforms (ChatGPT, Perplexity, Google AI Overviews, and more).
 
-## Features
-
-### 📋 Rules Today
-Exact formats, structures, and strategies for each content type. Every rule includes:
-- **What to do** — The specific action
-- **Why** — Why it matters for AI visibility
-- **How** — Step-by-step instructions
-- **Source** — Credible research link
-- **Example** — Good vs bad examples
-
-Currently covers:
-- Blog Posts
-- Press Releases (Wire + Editorial)
-- LinkedIn Posts
-- *Coming: 21 more content types*
-
-### 🔬 Research Library
-15 curated research sources organized by credibility tier:
-- **TIER 1** — Official (OpenAI, Anthropic, Google, Microsoft, Perplexity)
-- **TIER 2** — Verified research (Semrush, Ahrefs, Moz, Brandlight, etc.)
-- **TIER 3** — Community intelligence (Reddit, LinkedIn, Discord)
-
-### 🧪 Testing Ground
-Paste your content, get feedback like a New York Times editor + Moz + SEMrush analyst:
-- Structure analysis
-- Authority signals check
-- AI-generated content score
-- Competitive positioning gaps
-- Pre-publish checklist
-
-### ✨ Magic Mix
-Research-driven content stacks for different scenarios:
-- Base stack (most situations)
-- Crisis response stack
-- Product launch stack
-- Thought leadership stack
-- Educational/how-to stack
-
-*Stacks update ONLY when research proves they're necessary.*
-
-### ⚠️ Notes & Caveats
-Important context:
-- Different LLMs prefer different structures
-- Vertical/industry differences
-- Known contradictions in the field
-- Warnings (what NOT to do)
-- Plain-English glossary
+**Live:** Deployed on Vercel  
+**Stack:** Next.js 14, TypeScript, Tailwind CSS
 
 ---
 
-## Getting Started
+## What This Is
 
-### Development
+The AI Visibility Hub gives content creators, PR professionals, and marketers exact, research-backed templates and requirements for three content types:
+
+1. **Blog Posts** — The #1 format for AI citations
+2. **Press Releases** — Wire ≠ AI citation. Newsroom = AI citation.
+3. **LinkedIn Posts** — Engagement signal vs. AI visibility signal (they're different)
+
+Every requirement, stat, and template element is tied to a verified research source. No vague "research shows" claims.
+
+---
+
+## Key Research Facts (All Sourced)
+
+| Stat | Source |
+|------|--------|
+| AI-referred sessions grew 527% YoY (Jan–May 2025) | Previsible via Search Engine Land |
+| ChatGPT has 900M weekly users (Feb 2026) | OpenAI |
+| AI visitors convert 4.4x better than organic visitors | Semrush (Jun 2025) |
+| Only 44.3% of Google top-10 pages appear in any AI answer | Semrush (Feb 2026) |
+| 80% of LLM citations don't rank in Google's top 100 | Ahrefs (Aug 2025) |
+| GEO strategies boost AI visibility up to 40% | Princeton/IIT Delhi, KDD 2024 |
+| Newsroom PRs = 18% of ChatGPT citations; wire PRs = 0.04% | BuzzStream/XOFU via ALM Corp + ACCESS Newswire |
+| LinkedIn blocks AI crawlers (User Agreement §8.2) | LinkedIn TOS |
+| LinkedIn AI-detected posts see 30% reach drop | Closelyhq (Dec 2025) |
+| LinkedIn sweet spot: 1,200–1,800 characters | Digital Blacksmiths (Nov 2025) |
+
+---
+
+## Component Structure
+
+```
+components/
+├── RulesWorkspace.tsx     ← MAIN: Templates, Why It Works, Checklists
+├── Workspace.tsx          ← Tab container
+├── TestingWorkspace.tsx   ← Testing tools
+├── MagicMixWorkspace.tsx  ← Content mixer
+├── ResearchSidebar.tsx    ← Research links panel
+├── ResearchLibrary.tsx    ← Full research library
+├── RulesToday.tsx         ← Daily rules digest
+├── NotesAndCaveats.tsx    ← Caveats and limitations
+├── MagicMix.tsx           ← Mix logic
+└── TestingGround.tsx      ← Testing sandbox
+
+RESEARCH.md                ← 40 sourced citations with URLs and methodology notes
+```
+
+---
+
+## RulesWorkspace — Three Views Per Content Type
+
+Each content type (Blog / Press Release / LinkedIn) has three views:
+
+### 📋 Template View
+A complete, copy-paste template in dark code block. Every placeholder is labeled `[IN BRACKETS]`. Click "Copy Template" to grab it instantly.
+
+### 🔬 Why It Works View
+Every template element explained with:
+- The specific requirement
+- Why it matters for AI visibility
+- Exact source with URL
+
+### ✅ Checklist View
+Pre-publish checklist. Check off each item to track readiness. Every checklist item links to its research source. Progress bar tracks completion.
+
+---
+
+## Research Foundation
+
+All research in `RESEARCH.md`. 40 sources total, including:
+
+- **Academic:** Princeton/IIT Delhi GEO paper (KDD 2024) — the foundational AI visibility study
+- **Industry reports:** Semrush, Ahrefs, BuzzStream/XOFU, ACCESS Newswire, Muck Rack
+- **Platform guidance:** BusinessWire, PR Newswire, Microsoft Bing, LinkedIn TOS
+- **Practitioner analysis:** LLMRefs, Frase.io, SingleGrain, BrightEdge, Digidop
+- **Data tracking:** Previsible AI Traffic Report, ALM Corp citation analysis
+
+---
+
+## Local Development
+
 ```bash
 npm install
 npm run dev
-# Open http://localhost:3000
 ```
 
-### Production Build
-```bash
-npm run build
-npm start
-```
-
-### Deploy to Vercel
-See [DEPLOYMENT.md](./DEPLOYMENT.md)
+Open [http://localhost:3000](http://localhost:3000)
 
 ---
 
-## Project Structure
+## Deployment
 
-```
-ai-visibility-hub/
-├── app/
-│   ├── page.tsx              # Main dashboard
-│   ├── layout.tsx
-│   └── globals.css
-├── components/
-│   ├── RulesToday.tsx        # Content type rules (expandable)
-│   ├── ResearchLibrary.tsx   # Credible sources
-│   ├── TestingGround.tsx     # Content analyzer
-│   ├── MagicMix.tsx          # Content stacks
-│   └── NotesAndCaveats.tsx   # Context & warnings
-├── package.json
-├── tsconfig.json
-├── next.config.js
-├── tailwind.config.ts
-└── vercel.json
-```
+Deployed via Vercel. See `DEPLOYMENT.md` for full instructions.
 
 ---
 
-## How It Works
+## What "AI Visibility" Actually Means
 
-1. **Writer chooses their content type** → Rules Today shows exact format, structure, strategy
-2. **Writer creates content** → Testing Ground analyzes and gives feedback
-3. **New research emerges** → Rules Today updates with new findings + source links
-4. **ZAVI reveals patterns** → Magic Mix evolves with proof points
+Ranking #1 on Google is no longer enough. AI platforms (ChatGPT, Perplexity, Google AI Overviews) synthesize answers from multiple sources — and they often cite pages that **don't rank on Google at all**.
 
----
+- Only 2.1% of ChatGPT citations overlap with Google's top 10
+- 80% of LLM citations don't even rank in Google's top 100
 
-## Technology
-
-- **Framework:** Next.js 14
-- **Styling:** Tailwind CSS
-- **Language:** TypeScript
-- **Hosting:** Vercel
-- **Database:** None (MVP) — Supabase coming in Phase 2
+The game has changed. This hub shows you exactly what to do about it.
 
 ---
 
-## Roadmap
+## Last Updated
 
-### Phase 2 (This Week)
-- [ ] Add all 24 content types to Rules Today
-- [ ] Request ZAVI competitive analysis
-- [ ] Populate Magic Mix with real examples
-- [ ] Set up daily research monitoring
-
-### Phase 3 (Next Week)
-- [ ] Supabase integration (data storage)
-- [ ] TestingGround backend (real AI analysis)
-- [ ] User authentication (team access)
-- [ ] Automated daily updates
-
-### Phase 4 (Future)
-- [ ] API endpoint for tool integration
-- [ ] White-label version for clients
-- [ ] Auto-Magic Mix updates from ZAVI data
-- [ ] Writer leaderboard
-
----
-
-## Contributing
-
-This is a private hub for Zen Media team. To request changes or additions:
-1. Share the new content type or rule
-2. Provide credible source/research
-3. Include real examples or test results
-
----
-
-## Questions?
-
-See the **Notes & Caveats** section in the app for common questions and context.
-
----
-
-**Built with research, tested daily, updated when the rules change.** 🌊
+March 2026
