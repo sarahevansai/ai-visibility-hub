@@ -257,3 +257,79 @@ Every claim in the hub is tied to a specific source below.
 - LinkedIn detection claims (Closelyhq, 94%) are directional — not peer-reviewed
 - Press release citation percentages are from a specific 1-week study; treat as directional
 - All URLs verified as accessible as of March 27, 2026
+
+---
+
+## NEW SOURCES (Added March 27, 2026 — AI Notice Format Rebuild)
+
+### 41. "Best X" Listicles Account for 43.8% of All ChatGPT Citations
+- **Source:** Ahrefs AI SEO Statistics, via Glen Allsopp analysis of 26,000 sources / 750 search terms (December 2025)
+- **URL:** https://www.position.digital/blog/ai-seo-statistics/ (citing Ahrefs Dec 2025)
+- **Detail:** "Best-style listicles are the most cited page types in ChatGPT responses, accounting for 43.8% of all page types." Analyzed 26,000 sources across 750 search terms.
+- **Used in:** Listicle format key stat + why it works
+
+### 42. Wix Studio AI Search Lab: 75,000 AI Answers, 1M+ Citations Study
+- **Source:** Wix Studio AI Search Lab, reported by Search Engine Land (March 2026)
+- **URL:** https://searchengineland.com/ai-citations-favor-listicles-articles-product-pages-study-472364
+- **Detail:**
+  - Listicles led at 21.9% of citations overall
+  - Articles: 16.7%, Product pages: 13.7% (52% combined)
+  - Commercial-intent queries: Listicles captured 40% (nearly double any other format)
+  - Informational queries: Articles dominated at 45.5%
+  - Third-party listicles accounted for 80.9% of professional services citations vs. 19.1% for self-promotional lists
+  - All models favored listicles, but diverged after that: ChatGPT leaned into articles; Perplexity cited Reddit/forums at 17%
+- **Used in:** Listicle format + Editorial/Feature format key stats
+
+### 43. Notified/GlobeNewswire: How to Format a Press Release for AI Search
+- **Source:** Notified (GlobeNewswire parent company) Resource Guide (October 2025)
+- **URL:** https://www.notified.com/resources/how-to-format-a-press-release-for-ai-search
+- **Key guidance:**
+  - "Structure releases with AI-friendly formatting, using bullet points and clear subheadings"
+  - Keyword-rich, concise headlines (Bold, keyword-rich, concise)
+  - Short paragraphs, subheads and bullet points in body
+  - One quote per paragraph, always attributed
+  - Include a clear call to action
+  - Tags: 5-8 keywords for indexing
+  - Keep content short, skimmable and structured
+- **Used in:** All 5 format templates, checklist items for no em-dashes and formatting
+
+### 44. Stridec: AI SEO Internal Linking Models (February 2026)
+- **Source:** Stridec (February 2026)
+- **URL:** https://www.stridec.com/blog/ai-seo-internal-linking-models/
+- **Detail:** Internal linking models that influence AI summaries; how topical relevance of internal links impacts AI citation probability; authority transfer through internal linking.
+- **Used in:** Deep-Linking Guide; Editorial and Listicle template internal link requirements
+
+### 45. Position.digital: 90+ AI SEO Statistics (Updated March 2026)
+- **Source:** Position.digital AI SEO Statistics compilation (updated daily)
+- **URL:** https://www.position.digital/blog/ai-seo-statistics/
+- **Key stats confirmed:**
+  - Ahrefs Dec 2025: 43.8% listicle citation rate in ChatGPT
+  - Stacker Dec 2025: Wide distribution increases AI citations by up to 325%
+  - SE Ranking Nov 2025: FAQ schema markup not strictly required but boosts citation probability
+- **Used in:** Listicle format research + distribution guidance
+
+### 46. Onely: LLM-Friendly Content (December 2025)
+- **Source:** Onely (December 2025)
+- **URL:** https://www.onely.com/blog/llm-friendly-content/
+- **Key finding:** "100% of ranking AI-assisted content demonstrated clear E-E-A-T signals, including visible author expertise credentials" (citing Wellows research)
+- **Detail:** LLMs prioritize "original research, expert perspectives, specific data, and consistent brand presence across multiple credible sources"
+- **Used in:** Expert Q&A format key stat; SME Attribution Guide
+
+### 47. amicited.com: Do AI Search Engines Prefer Listicles? (January 2026)
+- **Source:** Am I Cited (January 2026)
+- **URL:** https://www.amicited.com/discussion/do-ai-search-engines-prefer-listicles-discussion/
+- **Detail:** "A 10-item detailed listicle outperforms a 50-item superficial one." Structural elements that optimize listicles for AI: clear H2/H3 heading hierarchies, comparison tables, short scannable paragraphs, and bullet points within each item.
+- **Used in:** Listicle format "each item" template section
+
+### 48. Reddit r/seogrowth: 1,400+ B2B SaaS AI Citations Analysis (January 2026)
+- **Source:** Reddit r/seogrowth (January 30, 2026)
+- **URL:** https://www.reddit.com/r/seogrowth/comments/1qr3q0t/we_analyzed_1400_chatgpt_and_perplexity_citations/
+- **Detail:** "Over 75% of citations come from listicles and product reviews." AI looks for "Top 10" lists that have already done the heavy lifting for comparison queries.
+- **Caveat:** Reddit thread, not peer-reviewed. Directional confirmation of Ahrefs/Wix Studio data.
+- **Used in:** Listicle format supporting context
+
+### 49. Snezzi: Listicle Optimization for AI (March 2026)
+- **Source:** Snezzi (March 2026)
+- **URL:** https://snezzi.com/blog/listicle-optimization-for-ai-9-tweaks-to-boost-citations/
+- **Detail:** AI models look for clear hierarchies, scannable formatting, and credibility signals (statistics + expert input) in listicle content. 9 specific optimization tweaks documented.
+- **Used in:** Listicle format "pattern synthesis" section

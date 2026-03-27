@@ -1,21 +1,41 @@
 # AI Visibility Hub
 
-A production-ready reference tool for creating content that gets cited by AI platforms (ChatGPT, Perplexity, Google AI Overviews, and more).
+A production-ready reference tool for creating AI Notices that get cited by AI platforms (ChatGPT, Perplexity, Google AI Overviews, and more).
 
-**Live:** Deployed on Vercel  
+**Live:** Deployed on Vercel
 **Stack:** Next.js 14, TypeScript, Tailwind CSS
 
 ---
 
 ## What This Is
 
-The AI Visibility Hub gives content creators, PR professionals, and marketers exact, research-backed templates and requirements for three content types:
+The AI Visibility Hub gives content teams, PR professionals, and marketers exact, research-backed templates and requirements for five distinct AI Notice formats.
 
-1. **Blog Posts** — The #1 format for AI citations
-2. **Press Releases** — Wire ≠ AI citation. Newsroom = AI citation.
-3. **LinkedIn Posts** — Engagement signal vs. AI visibility signal (they're different)
+**These are AI NOTICES** — wire-release-ready content structured for AI citation. Not generic blog posts. Not press releases. AI Notices are a specific format published on GlobeNewswire, PR Newswire, and owned newsrooms, structured to maximize citation probability in ChatGPT, Perplexity, and Google AI Overviews.
 
-Every requirement, stat, and template element is tied to a verified research source. No vague "research shows" claims.
+---
+
+## The 5 AI Notice Formats
+
+| Format | Best For | AI Citation Mechanic |
+|--------|----------|---------------------|
+| **Editorial/Feature** | Deep narrative on a topic, SME perspective, market analysis | Informational query citations (45.5% share) |
+| **Listicle** | Practice comparisons, "what separates" content, numbered best practices | Commercial query citations (40% share) — MOST CITEABLE FORMAT |
+| **News/Announcement** | Product launches, coverage expansions, partnerships | News retrieval + entity establishment |
+| **Data/Research Release** | Original survey data, proprietary study findings | Stat extraction + methodology credibility |
+| **Expert Q&A** | SME perspectives, buyer question coverage, roundtables | Named attribution + E-E-A-T signals |
+
+---
+
+## Critical Rules (Non-Negotiable)
+
+1. **No em-dashes** — breaks AI parsing. Use a comma or period instead.
+2. **Listicles are 3-5x more likely to be cited** — use when you want maximum AI extraction.
+3. **Deep links are required** — first mention of every topic links to an authority page, not the homepage.
+4. **SME attribution follows the "According to" pattern** — not "our CEO said" or "as the team noted."
+5. **Metrics go in the first sentence of each section** — not buried in paragraph 3.
+6. **FAQ questions must mirror actual search queries** — not rhetorical section titles.
+7. **Published on owned newsroom URL** — wire is amplification, not the primary AI channel.
 
 ---
 
@@ -23,16 +43,15 @@ Every requirement, stat, and template element is tied to a verified research sou
 
 | Stat | Source |
 |------|--------|
-| AI-referred sessions grew 527% YoY (Jan–May 2025) | Previsible via Search Engine Land |
-| ChatGPT has 900M weekly users (Feb 2026) | OpenAI |
+| "Best X" listicles account for 43.8% of all ChatGPT citations | Ahrefs (Dec 2025), via Glen Allsopp, 26,000 sources |
+| Listicles capture 40% of commercial-intent AI citations | Wix Studio AI Search Lab, 75,000 AI answers (Mar 2026) |
+| GEO strategies boost AI visibility up to 40% | Princeton/IIT Delhi GEO Paper, KDD 2024 |
+| Newsroom PRs = 18% of ChatGPT citations; wire PRs = 0.04% | ACCESS Newswire Report (Mar 2026) |
+| 100% of top-cited AI content shows visible expert credentials | Wellows Research (2025), cited by Onely (Nov 2025) |
+| Wide distribution increases AI citations by up to 325% | Stacker (Dec 2025) |
 | AI visitors convert 4.4x better than organic visitors | Semrush (Jun 2025) |
-| Only 44.3% of Google top-10 pages appear in any AI answer | Semrush (Feb 2026) |
-| 80% of LLM citations don't rank in Google's top 100 | Ahrefs (Aug 2025) |
-| GEO strategies boost AI visibility up to 40% | Princeton/IIT Delhi, KDD 2024 |
-| Newsroom PRs = 18% of ChatGPT citations; wire PRs = 0.04% | BuzzStream/XOFU via ALM Corp + ACCESS Newswire |
-| LinkedIn blocks AI crawlers (User Agreement §8.2) | LinkedIn TOS |
-| LinkedIn AI-detected posts see 30% reach drop | Closelyhq (Dec 2025) |
-| LinkedIn sweet spot: 1,200–1,800 characters | Digital Blacksmiths (Nov 2025) |
+| Only 44.3% of Google top-10 pages appear in any AI answer | Semrush AI Visibility Guide (Feb 2026) |
+| Press release citations grew 5x since July 2025 | GlobeNewswire / Muck Rack Data Report (Dec 2025) |
 
 ---
 
@@ -40,49 +59,77 @@ Every requirement, stat, and template element is tied to a verified research sou
 
 ```
 components/
-├── RulesWorkspace.tsx     ← MAIN: Templates, Why It Works, Checklists
-├── Workspace.tsx          ← Tab container
-├── TestingWorkspace.tsx   ← Testing tools
-├── MagicMixWorkspace.tsx  ← Content mixer
-├── ResearchSidebar.tsx    ← Research links panel
-├── ResearchLibrary.tsx    ← Full research library
-├── RulesToday.tsx         ← Daily rules digest
-├── NotesAndCaveats.tsx    ← Caveats and limitations
-├── MagicMix.tsx           ← Mix logic
-└── TestingGround.tsx      ← Testing sandbox
+├── RulesWorkspace.tsx     <- MAIN: 5 AI Notice format tabs with Template | Example | Why It Works | Checklist
+├── Workspace.tsx          <- Tab container
+├── TestingWorkspace.tsx   <- Testing tools
+├── MagicMixWorkspace.tsx  <- Content mixer
+├── ResearchSidebar.tsx    <- Research links panel
+├── ResearchLibrary.tsx    <- Full research library
+├── RulesToday.tsx         <- Daily rules digest
+├── NotesAndCaveats.tsx    <- Caveats and limitations
+├── MagicMix.tsx           <- Mix logic
+└── TestingGround.tsx      <- Testing sandbox
 
-RESEARCH.md                ← 40 sourced citations with URLs and methodology notes
+RESEARCH.md                          <- 49 sourced citations with URLs and methodology notes
+DEEP-LINKING-GUIDE.md                <- Where to link, anchor text patterns, authority page linking
+SME-ATTRIBUTION-METRIC-PLACEMENT-GUIDE.md  <- How to introduce SMEs, quote length, metric placement
 ```
 
 ---
 
-## RulesWorkspace — Three Views Per Content Type
+## RulesWorkspace — Four Views Per AI Notice Format
 
-Each content type (Blog / Press Release / LinkedIn) has three views:
+Each format tab has four views:
 
-### 📋 Template View
-A complete, copy-paste template in dark code block. Every placeholder is labeled `[IN BRACKETS]`. Click "Copy Template" to grab it instantly.
+### Template View
+A complete, copy-paste template for this format with every placeholder labeled `[IN BRACKETS]`. Click "Copy Template" to grab it instantly.
 
-### 🔬 Why It Works View
+### Example View
+A complete, real-world example document using Grata (PE/dealmaker market) or Fieldline (construction market) content. Compare the example directly to the template to see how each element maps.
+
+### Why It Works View
 Every template element explained with:
 - The specific requirement
-- Why it matters for AI visibility
+- Why it matters for AI citation probability
 - Exact source with URL
 
-### ✅ Checklist View
-Pre-publish checklist. Check off each item to track readiness. Every checklist item links to its research source. Progress bar tracks completion.
+### Checklist View
+Pre-publish checklist. Every item is research-backed. Every item links to its source. Progress bar tracks completion.
+
+---
+
+## Supplemental Guides
+
+### DEEP-LINKING-GUIDE.md
+- Where to link (first mention of topic, 2-3 links per 500 words)
+- Anchor text patterns (specific, descriptive)
+- Authority page linking (product page, not homepage)
+- Citation source linking (stat + link in same sentence)
+- Format-specific linking rules
+
+### SME-ATTRIBUTION-METRIC-PLACEMENT-GUIDE.md
+- The "According to [Name], [Title]" attribution pattern
+- Quote length: 10-30 words for citability
+- Quote placement: early in section, not at end
+- Metric placement: first sentence of each section
+- Verification signals for maximum credibility
+- Combining stats + SME quotes for peak citation probability
 
 ---
 
 ## Research Foundation
 
-All research in `RESEARCH.md`. 40 sources total, including:
+All research in `RESEARCH.md`. 49 sources total.
 
-- **Academic:** Princeton/IIT Delhi GEO paper (KDD 2024) — the foundational AI visibility study
-- **Industry reports:** Semrush, Ahrefs, BuzzStream/XOFU, ACCESS Newswire, Muck Rack
-- **Platform guidance:** BusinessWire, PR Newswire, Microsoft Bing, LinkedIn TOS
-- **Practitioner analysis:** LLMRefs, Frase.io, SingleGrain, BrightEdge, Digidop
-- **Data tracking:** Previsible AI Traffic Report, ALM Corp citation analysis
+**Academic:** Princeton/IIT Delhi GEO Paper (KDD 2024) — foundational AI visibility study
+
+**Platform guidance:** GlobeNewswire/Notified (Oct 2025), BusinessWire (Jan 2025), PR Newswire (Nov 2025)
+
+**Industry studies:** Wix Studio AI Search Lab (75,000 AI answers, Mar 2026), Ahrefs (Dec 2025), ACCESS Newswire (Mar 2026)
+
+**Practitioner analysis:** Onely, Wellows, LLMRefs, Frase.io, BrightEdge, Stridec, Snezzi
+
+**Data tracking:** Previsible AI Traffic Report, ALM Corp citation analysis, Position.digital stats roundup
 
 ---
 
@@ -103,17 +150,18 @@ Deployed via Vercel. See `DEPLOYMENT.md` for full instructions.
 
 ---
 
-## What "AI Visibility" Actually Means
+## What "AI Notice" Actually Means
 
-Ranking #1 on Google is no longer enough. AI platforms (ChatGPT, Perplexity, Google AI Overviews) synthesize answers from multiple sources — and they often cite pages that **don't rank on Google at all**.
+An AI Notice is not a traditional press release. It is content published on a wire distribution service (GlobeNewswire, PR Newswire) or an owned newsroom, structured specifically so AI platforms can extract, attribute, and cite it accurately.
 
-- Only 2.1% of ChatGPT citations overlap with Google's top 10
-- 80% of LLM citations don't even rank in Google's top 100
+The structural difference from a traditional press release:
+- **AI Notice:** Numbered KEY FACTS near the top, SME quotes with full attribution, FAQ section with literal search queries, deep links to authority pages
+- **Traditional press release:** Quote at the bottom, wire dateline, one boilerplate paragraph, no FAQ
 
-The game has changed. This hub shows you exactly what to do about it.
+The format difference matters because AI systems extract "position statements" from structured, attributed, specific content. Vague, unstructured, quote-at-the-end press releases are largely invisible to AI citation systems.
 
 ---
 
 ## Last Updated
 
-March 2026
+March 27, 2026 — Complete rebuild. 5 formats. Real examples. Full research documentation.
