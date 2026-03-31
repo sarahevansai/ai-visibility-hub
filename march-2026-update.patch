@@ -1,0 +1,493 @@
+diff --git a/components/ResearchSidebar.tsx b/components/ResearchSidebar.tsx
+index 31aac9e..db0d3e6 100644
+--- a/components/ResearchSidebar.tsx
++++ b/components/ResearchSidebar.tsx
+@@ -27,6 +27,71 @@ interface TrendingItem {
+ 
+ // Fallback static data in case API is unavailable
+ const FALLBACK_WHATS_NEW: WhatsNewItem[] = [
++  // ── MARCH 2026 CORE UPDATE + LLM CHANGES ──
++  {
++    id: 'google-march-2026-core-update',
++    title: 'Google March 2026 Core Update rolling out — 55% of sites affected',
++    detail: 'Began March 27. Recalibrates rankings on comparative value, intent alignment, and expertise. AI content farms lost 60-80% of traffic. Sites with human editorial oversight are performing well. Expected 2-week rollout.',
++    source: 'Google Search Status Dashboard / Ahrefs + Semrush, March 2026',
++    sourceUrl: 'https://status.search.google.com/',
++    date: 'March 27, 2026',
++    tier: 1,
++  },
++  {
++    id: 'gemini-3-ai-overviews',
++    title: 'Gemini 3 now powers AI Overviews globally — AI Mode gets Canvas',
++    detail: 'Google Search uses Gemini 3 for AI Overviews worldwide (since Jan 27). AI Overviews now appear on 82% of B2B tech searches, up from 36% a year ago. Gemini Canvas in AI Mode transforms search into an interactive workspace.',
++    source: 'Google Blog, January-March 2026',
++    sourceUrl: 'https://blog.google/products-and-platforms/products/search/ai-mode-ai-overviews-updates/',
++    date: 'March 2026',
++    tier: 1,
++  },
++  {
++    id: 'citations-not-rankings',
++    title: 'Only 38% of AI Overview citations come from top-10 organic results',
++    detail: '80% of LLM citations don\'t rank in Google\'s top 100 for the original query. Citation algorithms are now independent of traditional SEO rankings — requires a different optimization strategy.',
++    source: 'Position.digital AI SEO Statistics, March 2026',
++    sourceUrl: 'https://www.position.digital/blog/ai-seo-statistics/',
++    date: 'March 2026',
++    tier: 1,
++  },
++  {
++    id: 'schema-trust-signal',
++    title: 'Schema markup shifts from display trigger to AI trust signal',
++    detail: 'Gemini-powered AI Mode uses schema to verify claims, establish entity relationships, and assess source credibility. Sites with proper schema are cited 3.2x more often in AI responses. JSON-LD in head remains the preferred format.',
++    source: 'Digital Applied + Writesonic Research, March 2026',
++    sourceUrl: 'https://www.digitalapplied.com/blog/schema-markup-after-march-2026-structured-data-strategies',
++    date: 'March 2026',
++    tier: 1,
++  },
++  {
++    id: 'chatgpt-citation-behavior',
++    title: 'ChatGPT only cites 15% of pages it retrieves — front-loading is critical',
++    detail: '85% of retrieved sources never get cited. 44.2% of all citations come from the first 30% of text. Listicle citations dropped 30% (Dec 2025-Jan 2026). Turn 1 web searches are 2.5x more likely to trigger citations than Turn 10.',
++    source: 'ALM Corp ChatGPT Citations Study, March 2026',
++    sourceUrl: 'https://almcorp.com/blog/chatgpt-citations-study/',
++    date: 'March 2026',
++    tier: 1,
++  },
++  {
++    id: 'comparative-value-filtering',
++    title: 'Google now filters content that doesn\'t add comparative value',
++    detail: 'The March 2026 update deploys a Gemini 4.0 Semantic Filter to evaluate how much genuinely new information a page contributes vs. existing top results. Pages rephrasing existing content without original data or unique perspective lose ground.',
++    source: 'Zen Media Core Update Impact Analysis, March 2026',
++    sourceUrl: 'https://searchengineland.com/',
++    date: 'March 30, 2026',
++    tier: 1,
++  },
++  {
++    id: 'eeat-experience-amplified',
++    title: 'E-E-A-T "Experience" signal amplified — named authors with credentials outperform',
++    detail: 'The first E in E-E-A-T has been elevated beyond previous levels. Named authors with verifiable credentials and byline consistency outperform generic "Editorial Team" attribution. Structured author pages with industry affiliations saw measurable ranking improvements within weeks.',
++    source: 'Digital Applied + Coalition Technologies, March 2026',
++    sourceUrl: 'https://www.digitalapplied.com/',
++    date: 'March 2026',
++    tier: 1,
++  },
++  // ── EXISTING ITEMS (still valid) ──
+   {
+     id: 'wix-listicle-21pct',
+     title: 'Listicles lead all AI citation formats at 21.9%',
+@@ -34,16 +99,25 @@ const FALLBACK_WHATS_NEW: WhatsNewItem[] = [
+     source: 'Wix Studio AI Search Lab, March 2026',
+     sourceUrl: 'https://www.wix.com/studio/ai-search-lab/research/content-types-most-cited-by-llms',
+     date: 'March 24, 2026',
+-    tier: 1,
++    tier: 2,
+   },
+   {
+-    id: 'ahrefs-listicle-438pct',
+-    title: '"Best X" listicles account for 43.8% of all ChatGPT citations',
+-    detail: 'Listicle format dominates ChatGPT responses specifically, making it the single most powerful format for AI answer engine visibility.',
+-    source: 'Ahrefs via Position.digital, March 2026',
+-    sourceUrl: 'https://www.position.digital/blog/ai-seo-statistics/',
+-    date: 'March 26, 2026',
+-    tier: 1,
++    id: 'perplexity-drops-ads',
++    title: 'Perplexity drops ads entirely — most diverse citation sourcing of any LLM',
++    detail: 'Perplexity removed ads to protect answer integrity. Reddit represents 46.7% of its top citations. Only 25.11% domain duplication — the most diverse sourcing compared to ChatGPT (71% duplication).',
++    source: 'Growtika LLM Visibility Guide, March 2026',
++    sourceUrl: 'https://growtika.com/blog/llm-visibility',
++    date: 'March 2026',
++    tier: 2,
++  },
++  {
++    id: 'content-structure-citations',
++    title: 'Consistent heading levels = 40% more likely to be cited by ChatGPT',
++    detail: 'Content with consistent heading hierarchy, bullet lists, and short paragraphs improves extraction likelihood. Sites with 32K+ referring domains are 3.5x more likely to be cited.',
++    source: 'Wellows LLM Citations Research, February 2026',
++    sourceUrl: 'https://wellows.com/blog/llm-citations/',
++    date: 'February 2026',
++    tier: 2,
+   },
+   {
+     id: 'semrush-linkedin-2',
+@@ -52,19 +126,30 @@ const FALLBACK_WHATS_NEW: WhatsNewItem[] = [
+     source: 'Semrush LinkedIn AI Visibility Study, March 2026',
+     sourceUrl: 'https://www.semrush.com/blog/linkedin-ai-visibility-study/',
+     date: 'March 2026',
+-    tier: 1,
++    tier: 2,
++  },
++  {
++    id: 'ai-overview-click-boost',
++    title: 'Sites cited in AI Overviews see 25-40% click increase',
++    detail: 'Getting cited inside an AI Overview earns 35% more clicks than holding a traditional ranking alone. Structured content with question-based headings, direct answers, stats, and expert names performs best for AI extraction.',
++    source: 'Google 2026 Data via SEO HQ',
++    sourceUrl: 'https://seohq.github.io/ai-overviews-optimization-2026',
++    date: 'March 2026',
++    tier: 2,
+   },
+ ]
+ 
+ const FALLBACK_TRENDING: TrendingItem[] = [
+-  { id: 'listicle-format-dominance', topic: 'Listicles dominating answer engines', signal: 'HOT', description: 'Listicle format driving the highest citation rates across Zen Media client portfolio.' },
+-  { id: 'sme-attribution-citations', topic: 'SME attribution driving citations', signal: 'HOT', description: 'Named expert attribution seeing 2-3x citation uplift vs. unsigned content.' },
+-  { id: 'earned-media-over-owned', topic: 'Earned media over brand-owned content', signal: 'HOT', description: 'Third-party editorial placements outperforming brand-owned content for AI citation rate.' },
+-  { id: 'entity-authority-signals', topic: 'Entity authority signals critical', signal: 'RISING', description: 'Knowledge panel presence and entity disambiguation driving AI visibility.' },
+-  { id: 'faq-optimization-surge', topic: 'FAQ optimization surging', signal: 'RISING', description: 'FAQ-structured content capturing outsized share of conversational AI queries.' },
+-  { id: 'data-releases-outperform', topic: 'Data releases outperforming news', signal: 'RISING', description: 'Original data driving the highest sustained citation rates.' },
+-  { id: 'schema-markup-essential', topic: 'Schema markup now essential', signal: 'HOT', description: 'Structured data implementation correlating with higher AI citation rates.' },
+-  { id: 'deep-linking-patterns', topic: 'Deep-linking patterns emerging', signal: 'NEW', description: 'Internal deep-linking strategy improving AI crawlability and citation cohesion.' },
++  { id: 'march-2026-core-update', topic: 'Google March 2026 Core Update rolling out', signal: 'HOT', description: 'First core update of 2026. 55% of sites affected. Comparative value filtering and E-E-A-T Experience amplification are the key signals.' },
++  { id: 'citations-independent-of-seo', topic: 'LLM citations now independent of SEO rankings', signal: 'HOT', description: 'Only 38% of AI Overview citations come from top-10 organic results. 80% of LLM citations don\'t rank in Google top 100.' },
++  { id: 'schema-as-ai-trust-signal', topic: 'Schema markup = AI trust signal (not just rich results)', signal: 'HOT', description: 'Gemini AI Mode uses schema to verify claims and assess credibility. 3.2x citation boost for sites with proper schema.' },
++  { id: 'comparative-value-filter', topic: 'Gemini 4.0 Semantic Filter detecting low-value content', signal: 'HOT', description: 'Google now filtering pages that rephrase existing content without adding original data, expert perspective, or unique value.' },
++  { id: 'front-loading-critical', topic: 'Front-loading claims is now critical for citations', signal: 'HOT', description: '44.2% of ChatGPT citations come from the first 30% of text. ChatGPT only cites 15% of pages it retrieves.' },
++  { id: 'ai-overviews-82pct-b2b', topic: 'AI Overviews on 82% of B2B searches', signal: 'RISING', description: 'Up from 36% a year ago. Being cited in AI Overviews now earns 35% more clicks than traditional rankings alone.' },
++  { id: 'agentic-web-2026', topic: '2026: Year of the Agentic Web', signal: 'RISING', description: 'ChatGPT Operator, Perplexity Actions executing tasks on behalf of users. Search and assistant functions merging.' },
++  { id: 'author-credentials-amplified', topic: 'Named author credentials outperforming generic bylines', signal: 'RISING', description: 'E-E-A-T Experience signal elevated. Structured author pages with industry affiliations seeing measurable ranking improvements.' },
++  { id: 'gemini-canvas-in-search', topic: 'Gemini Canvas live in Google AI Mode', signal: 'NEW', description: 'Transforms search into interactive workspace for planning, writing, and coding. Available to all U.S. users in English.' },
++  { id: 'perplexity-ad-free', topic: 'Perplexity drops ads — most diverse citations', signal: 'NEW', description: 'Removed ads to protect answer integrity. Only 25% domain duplication vs. ChatGPT at 71%.' },
+ ]
+ 
+ function formatUpdated(iso: string | null): string {
+diff --git a/components/RulesToday.tsx b/components/RulesToday.tsx
+index 049e443..e23c931 100644
+--- a/components/RulesToday.tsx
++++ b/components/RulesToday.tsx
+@@ -11,77 +11,84 @@ const CONTENT_TYPES = [
+     rules: {
+       format: [
+         {
+-          rule: 'Start with a clear problem statement (first 100 words)',
+-          why: 'AI systems extract the opening section to understand context. Clarity here = higher citation likelihood',
+-          how: 'Open with "Problem: [specific issue]" and explain the pain point before introducing your solution',
+-          source: 'https://www.semrush.com/blog/ai-search-trends/',
+-          example: '❌ "There are many AI models available today..." vs ✅ "Most companies struggle to choose between ChatGPT and Claude for their use case. Here\'s what you need to know..."'
++          rule: 'Front-load your most citable claim in the first 30% of text',
++          why: '44.2% of all ChatGPT citations come from the first 30% of content. ChatGPT only cites 15% of pages it retrieves — your opening must earn it (ALM Corp, March 2026)',
++          how: 'Put your strongest, most specific claim in the first 100 words. State the core finding plainly — no "in today\'s world" preamble',
++          source: 'https://almcorp.com/blog/chatgpt-citations-study/',
++          example: '❌ "There are many AI models available today..." vs ✅ "Most companies struggle to choose between ChatGPT and Claude for their use case. Here\'s what the data shows..."'
+         },
+         {
+-          rule: 'Use H2 headers for major topic sections (3-8 headers per post)',
+-          why: 'AI systems use header hierarchy to understand content structure. Proper headers = better extraction and citation',
+-          how: 'Each H2 should introduce a distinct subtopic. Start with the most important/foundational topics',
+-          source: 'https://www.optifox.in/blog/ai-overviews-citation-2026/',
+-          example: '✅ "## Understanding Model Selection Criteria" then "## ChatGPT vs Claude Comparison"'
++          rule: 'Use consistent H2 headers as answerable sub-questions (3-8 per post)',
++          why: 'Content with consistent heading levels is 40% more likely to be cited by ChatGPT (Wellows, Feb 2026). AI Overviews pull structured, extractable content from H2 sections',
++          how: 'Each H2 should be answerable ("What does X require?" not "The regulatory landscape"). Start with the most important topics',
++          source: 'https://wellows.com/blog/llm-citations/',
++          example: '✅ "## What Does CySEC Regulation Actually Require?" not "## The Regulatory Landscape"'
+         },
+         {
+-          rule: 'Place authority sources and citations early (paragraph 2-3, not buried)',
+-          why: 'AI systems are more likely to cite sources that appear early and are attributed clearly',
+-          how: 'Reference credible research, studies, or official docs in your second paragraph. Use format: "According to [Source], [finding]"',
+-          source: 'https://brandlight.io/research/ai-citation-analysis/',
++          rule: 'Place authority sources and citations early (paragraph 2-3)',
++          why: 'AI systems are more likely to cite sources that appear early and are attributed clearly. Turn 1 web searches are 2.5x more likely to trigger citations than Turn 10',
++          how: 'Reference credible research in your second paragraph. Use format: "According to [Source], [finding]"',
++          source: 'https://almcorp.com/blog/chatgpt-citations-study/',
+           example: '✅ "According to Anthropic\'s 2026 research, Claude handles reasoning tasks 23% faster than alternatives"'
++        },
++        {
++          rule: 'Add original data, first-party research, or unique perspective',
++          why: 'Google March 2026 Core Update now filters content for comparative value. Pages rephrasing existing top results without adding original data or unique perspective lose ground. Sites with original research saw ~22% visibility gains',
++          how: 'Include at least one proprietary data point, original survey result, or named expert perspective not found elsewhere',
++          source: 'https://searchengineland.com/',
++          example: '✅ "Our analysis of 1,200 PE sector scans found firms using full-coverage data identify 3.2x more targets" — not a rehash of someone else\'s stat'
+         }
+       ],
+-      length: [
++      authorCredentials: [
+         {
+-          rule: 'Target 2,000-3,500 words for topical authority',
+-          why: 'Longer content signals expertise to AI systems. Too short (< 1,200 words) = dismissed as surface-level',
+-          how: 'Cover all angles of your topic. If competitors write 2,500, aim for 3,000+',
+-          source: 'https://www.semrush.com/blog/',
+-          example: 'A post on "AI visibility best practices" should cover: definition, why it matters, the LLMs that matter, implementation, tools, common mistakes, and future outlook'
++          rule: 'Use named authors with verifiable credentials — not "Editorial Team"',
++          why: 'The March 2026 Core Update amplifies the Experience signal in E-E-A-T. Named authors with verifiable credentials outperform generic attribution. Sites with structured author pages saw ranking improvements within weeks',
++          how: 'Add: full name, title, credentials, and a "who has..." clause. Add Schema.org Person markup linked to LinkedIn or company bio. Keep byline format consistent across all posts',
++          source: 'https://www.digitalapplied.com/',
++          example: '✅ "By Jane Smith, VP of Engineering at ClientCo, who has led the company\'s data infrastructure team since 2019"'
+         }
+       ],
+       schema: [
+         {
+-          rule: 'Add Article schema (JSON-LD) to every blog post',
+-          why: 'Schema helps Google and other AI systems understand your content structure and metadata',
+-          how: 'Include: headline, description, author, datePublished, dateModified, image, articleBody',
+-          source: 'https://schema.org/Article',
+-          example: '```json\n{\n  "@context": "https://schema.org",\n  "@type": "Article",\n  "headline": "AI Visibility Best Practices 2026",\n  "datePublished": "2026-03-27",\n  "dateModified": "2026-03-27",\n  "author": { "@type": "Person", "name": "Your Name" }\n}\n```'
++          rule: 'Add Article + FAQ schema (JSON-LD) — schema is now an AI trust signal',
++          why: 'Post-March 2026 update: schema shifted from "SERP display trigger" to "AI trust and entity verification signal." Gemini AI Mode uses schema to verify claims and assess credibility. Sites with proper schema cited 3.2x more often (Writesonic, 2026)',
++          how: 'Include: headline, description, author (Person type with sameAs to LinkedIn), datePublished, dateModified. Add FAQPage schema for your FAQ section. Add speakable property targeting bullet summary and FAQ sections',
++          source: 'https://www.digitalapplied.com/blog/schema-markup-after-march-2026-structured-data-strategies',
++          example: '```json\n{\n  "@context": "https://schema.org",\n  "@type": "Article",\n  "headline": "AI Visibility Best Practices 2026",\n  "datePublished": "2026-03-27",\n  "dateModified": "2026-03-30",\n  "author": { "@type": "Person", "name": "Jane Smith", "sameAs": "https://linkedin.com/in/janesmith" }\n}\n```'
+         }
+       ],
+       freshness: [
+         {
+-          rule: 'Update publish/modified date monthly if content is evergreen',
+-          why: 'AI systems prefer recently updated content. Stale metadata = deprioritized',
+-          how: 'Add a "Last updated: [date]" note at the top or bottom. Update dateModified in schema',
++          rule: 'Align all three dates: dateline, datePublished in JSON-LD, and actual go-live',
++          why: 'The March 2026 update rewards recency signals. Mismatched dates create confusion for both Google and AI systems. Flag any content where the gap between writing and go-live exceeds 14 days',
++          how: 'Update "As of" dateline, dateModified in schema, and actual publish date. All three must match. Update monthly for evergreen content',
+           source: 'https://www.semrush.com/blog/freshness-signals/',
+-          example: '✅ "Last updated March 27, 2026" (update this every 30 days if content is accurate)'
++          example: '✅ Dateline says "March 30, 2026" — JSON-LD dateModified says "2026-03-30" — article actually published March 30'
+         }
+       ],
+       links: [
+         {
+           rule: 'Use descriptive, keyword-rich anchor text (not "click here")',
+-          why: 'AI systems use anchor text to understand link relevance. Vague text = weak signal',
++          why: 'AI systems use anchor text to understand link relevance. Sites with 32K+ referring domains are 3.5x more likely to be cited than those with up to 200 domains',
+           how: 'Write: "Read our guide on [topic]" instead of "Read more"',
+-          source: 'https://www.optifox.in/blog/ai-overviews-citation-2026/',
++          source: 'https://wellows.com/blog/llm-citations/',
+           example: '✅ "According to our [guide on AI visibility strategies for B2B SaaS](url)" vs ❌ "Read our [guide](url)"'
+         }
+       ],
+       standOut: [
+-        'Include original research or data (even small surveys). AI systems cite original findings heavily',
+-        'Add a FAQ section at the end covering common questions about your topic',
+-        'Reference competitors by name when comparing (but stay fair and factual)',
+-        'Include a "Key Takeaways" section (bullet points, 5-8 items) that summarizes the post'
++        'Include original research or proprietary data — Google\'s March 2026 update specifically rewards this with ~22% visibility gains',
++        'Add a FAQ section (8-12 questions from real prompt analysis) — this is the highest-probability AI citation surface with AI Overviews on 82% of B2B searches',
++        'Add a "Methodology" or "About This Data" note at the end of data-heavy posts to signal primary-source credibility',
++        'Include a "Key Takeaways" section (5-8 items) — AI systems extract these heavily'
+       ],
+-      aiWarning: 'Posts with repetitive phrasing, obvious AI filler, or generic advice get low citation scores. If your content sounds like ChatGPT\'s default output, edit it. Rewrite 20-30% of AI-generated content with your own voice and examples.'
++      aiWarning: 'Google\'s March 2026 Gemini 4.0 Semantic Filter specifically targets AI-language patterns. Posts with repetitive phrasing, obvious AI filler, or generic advice will be filtered. If your content sounds like ChatGPT\'s default output, rewrite 20-30% with your own voice, examples, and original data.'
+     }
+   },
+   {
+     id: 'press-releases',
+     name: 'Press Releases (Wire + Editorial)',
+     emoji: '📰',
+-    description: 'Newswire-style and editorial press releases for maximum AI visibility and distribution',
++    description: 'AI Notices and editorial releases optimized for the March 2026 Core Update signals',
+     rules: {
+       format: [
+         {
+@@ -89,32 +96,57 @@ const CONTENT_TYPES = [
+           why: 'Wire format is standardized across news distribution. AI systems recognize and prioritize wire-formatted releases',
+           how: 'Start with: [CITY, STATE] – [Date] – Company Announcement. Then the main news in 1-2 sentences',
+           source: 'https://www.prnewswire.com/news-releases/',
+-          example: '✅ "SAN FRANCISCO, CA – March 27, 2026 – Zen Media announced it has become the #1 AI visibility agency..."'
++          example: '✅ "SAN FRANCISCO, CA – March 30, 2026 – Zen Media announced it has become the #1 AI visibility agency..."'
++        },
++        {
++          rule: 'Add a Comparative Value Pre-Check before drafting',
++          why: 'Google\'s March 2026 update evaluates how much genuinely NEW information a page contributes vs. existing top results. This is now the #1 priority action (low effort, high impact)',
++          how: 'Before drafting, run 2-3 target prompts through ChatGPT, Perplexity, and Google AI Overviews. Document what\'s already being cited. Your wire must add: (a) first-party data not in current citations, (b) a named expert perspective not represented, or (c) a specific scenario current answers lack',
++          source: 'https://searchengineland.com/',
++          example: 'Record the "comparative value add" in the Wire Brief table as a new field'
+         }
+       ],
+       editorial: [
+         {
+-          rule: 'Create editorial version (blog post style) alongside wire release',
+-          why: 'Wire releases are cited for newsworthiness; editorial versions are cited for depth and authority',
+-          how: 'Wire release (200-300 words) + Editorial version (800-1,200 words with narrative, context, expert quotes)',
++          rule: 'Create editorial version alongside wire — editorial framing, not announcement framing',
++          why: 'The update rewards content that leads with industry trends where the client is the expert source — not announcements. Every wire should pass: "Is this about an industry trend, or about the client doing something?"',
++          how: 'Wire release (200-300 words) + Editorial version (800-1,200 words). Lead with the industry problem, not the company news',
+           source: 'https://www.semrush.com/blog/pr-strategy/',
+-          example: 'Wire: "Company launches new product" → Editorial: "Here\'s why this product matters, the problem it solves, customer quotes, vision"'
++          example: 'Wire: "Company launches new product" → Editorial: "Here\'s why this industry problem is accelerating, expert analysis, and what organizations should do"'
++        }
++      ],
++      smeCredentials: [
++        {
++          rule: 'Add credential clause after every SME quote attribution',
++          why: 'The March 2026 update amplifies Experience signals. Named authors with verifiable credentials outperform generic "Editorial Team" attribution. The "who has..." clause signals verifiable experience to both Google and AI systems',
++          how: 'After the first quote attribution, add one sentence with full name, exact title, company, and a credential establishing relevant experience. Keep it factual and specific',
++          source: 'https://www.digitalapplied.com/',
++          example: '✅ "Quote here," said Jane Smith, VP of Engineering at ClientCo, who has led the company\'s data infrastructure team since 2019.'
++        }
++      ],
++      schemaAndDates: [
++        {
++          rule: 'Ensure JSON-LD schema on every wire + align all three dates',
++          why: 'Article, Organization, FAQ schema are all high-ROI signals post-March 2026 update. Schema is now an AI trust verification signal, not just a rich result trigger. Mismatched dates between dateline, JSON-LD datePublished, and GlobeNewswire go-live date hurt freshness signals',
++          how: 'Confirm "As of" date in dateline, datePublished in JSON-LD, and go-live date all align. Add speakable property targeting bullet summary and FAQ sections. Test in Google Rich Results Test before rollout',
++          source: 'https://www.digitalapplied.com/blog/schema-markup-after-march-2026-structured-data-strategies',
++          example: 'If a wire is delayed past its original date, update ALL THREE dates before submission'
+         }
+       ],
+       standOut: [
+-        'Include specific metrics or results (not vague claims). "45% improvement in X" beats "significant improvement"',
+-        'Quote leadership using their voice (not corporate speak). AI systems prefer authentic quotes',
+-        'Add context about *why* this matters (not just what happened)',
+-        'Include a clear call-to-action or next step for readers'
++        'Include at least one first-party data point per wire (SOAR Originality standard) — the update rewards original research with ~22% visibility gains',
++        'Include specific metrics ("45% improvement in X" beats "significant improvement") — AI systems cite specifics',
++        'FAQ sections sourced from real ZAVI prompt analysis, not invented questions — the update rewards structured Q&A optimized for AI extraction',
++        'Quote leadership using their authentic voice with credential clauses — not corporate speak'
+       ],
+-      aiWarning: 'Press releases that read like marketing fluff ("We\'re excited to announce...") don\'t get cited. AI systems can detect marketing language. Be specific, direct, and newsworthy.'
++      aiWarning: 'The Gemini 4.0 Semantic Filter specifically targets AI-language patterns and content produced at scale without human editorial oversight. Our 16-point AI detection scan catches exactly what this filter looks for. Press releases with marketing fluff ("We\'re excited to announce...") don\'t get cited.'
+     }
+   },
+   {
+     id: 'linkedin-posts',
+     name: 'LinkedIn Posts',
+     emoji: '💼',
+-    description: 'Social media posts optimized for LinkedIn\'s algorithm and AI citation patterns',
++    description: 'LinkedIn is the #2 most cited domain in AI search (11% of AI responses). Optimize accordingly.',
+     rules: {
+       algoSignals: [
+         {
+@@ -124,37 +156,37 @@ const CONTENT_TYPES = [
+           source: 'https://www.linkedin.com/pulse/why-linkedin-algorithm-hates-links-2025/',
+           example: '✅ Post body: "Here\'s what we learned about AI visibility..." (no link) → First comment: "[Link to full article]"'
+         },
++        {
++          rule: 'Start with a hook that includes a specific claim or data point',
++          why: 'LinkedIn shows first 1-2 lines in feeds. AI systems also extract opening lines. 44.2% of ChatGPT citations come from the first 30% of text — the same principle applies to LinkedIn content that gets cited',
++          how: 'Use: a specific stat, contradiction, or bold claim. Not "Great insights below..."',
++          source: 'https://almcorp.com/blog/chatgpt-citations-study/',
++          example: '✅ "Only 38% of AI Overview citations come from top-10 organic results. Here\'s what that means for your strategy..." vs ❌ "Check out this great post about AI..."'
++        },
+         {
+           rule: 'Use 5 hashtags (one per line, at the end)',
+           why: 'LinkedIn algorithm indexes hashtags. Multiple hashtags = reach. But 5+ looks spammy',
+           how: 'Choose hashtags matching your niche: #AIVisibility #AEO #ContentStrategy #AIMarketing #Visibility',
+           source: 'https://www.linkedin.com/feed/',
+           example: '✅ "Post content...\\n\\n#AIVisibility\\n#AEO\\n#ContentStrategy\\n#SEO\\n#AI"'
+-        },
+-        {
+-          rule: 'Start with a hook (first line). Make readers want to continue',
+-          why: 'LinkedIn shows first 1-2 lines in feeds. Strong hook = higher click rate = better algorithm score',
+-          how: 'Use: a question, contradiction, stat, or bold statement. Not "Great insights below..."',
+-          source: 'https://www.linkedin.com/pulse/',
+-          example: '✅ "I just found out why 87% of AI visibility strategies fail..." vs ❌ "Check out this great post about AI..."'
+         }
+       ],
+       distribution: [
+         {
+-          rule: 'Repost high-performing posts (without comment) 3-4 days later',
+-          why: 'LinkedIn shows posts to different audiences at different times. Reposting extends reach',
++          rule: 'Repost high-performing posts 3-4 days later',
++          why: 'LinkedIn shows posts to different audiences at different times. Reposting extends reach. LinkedIn appears in 11% of all AI responses — high-performing posts have extended citation life',
+           how: 'Check which posts got >100 comments/reactions. Repost 72 hours later (same post, no new commentary)',
+-          source: 'https://www.linkedin.com/pulse/',
++          source: 'https://www.semrush.com/blog/linkedin-ai-visibility-study/',
+           example: 'Post goes live Tuesday. Gets 200+ reactions by Friday. Repost Monday (clean, no "reposting this..." note)'
+         }
+       ],
+       standOut: [
+-        'Ask a specific question at the end to drive engagement (AI systems track engagement as authority signal)',
+-        'Share a surprising stat or contradiction (e.g., "We tested 50 AI visibility tactics. Most don\'t work...")',
+-        'Use short sentences and white space (easier to read on mobile)',
+-        'Tag relevant people/companies naturally (not spam-like)'
++        'Share original data or a surprising stat — AI systems cite original findings heavily. The March 2026 update specifically rewards comparative value',
++        'Ask a specific question at the end to drive engagement (engagement = authority signal for AI systems)',
++        'Use short sentences and white space (easier to read on mobile, easier for AI to extract)',
++        'Tag relevant people/companies naturally — Perplexity sources 46.7% of its citations from community platforms'
+       ],
+-      aiWarning: 'LinkedIn posts that are obviously AI-generated (flat tone, generic advice) get buried. Write like a human. Use conversational language, share opinions, include personal experiences.'
++      aiWarning: 'LinkedIn posts that are obviously AI-generated get buried by LinkedIn\'s algorithm AND ignored by AI citation systems. Write like a human. Use conversational language, share opinions, include personal experience. The March 2026 Gemini Semantic Filter detects AI-language patterns — this applies to all indexed content.'
+     }
+   }
+ ]
+@@ -167,8 +199,8 @@ export default function RulesToday() {
+     <div className="space-y-6">
+       <div className="bg-blue-900/20 border border-blue-800 rounded-lg p-6 mb-8">
+         <h2 className="text-xl font-bold text-blue-300 mb-2">📋 Rules Today</h2>
+-        <p className="text-slate-300">Current best practices for each content type based on verified research and testing. Every rule is tied to a credible source.</p>
+-        <p className="text-sm text-slate-400 mt-2">Last updated: Today • Next update: Tomorrow 5:00 AM PT</p>
++        <p className="text-slate-300">Current best practices updated for the Google March 2026 Core Update (rolling out since March 27) and latest LLM citation research. Every rule is sourced.</p>
++        <p className="text-sm text-slate-400 mt-2">Last updated: March 30, 2026 • Includes: March 2026 Core Update, Gemini 3 AI Overviews, ChatGPT/Perplexity citation shifts</p>
+       </div>
+ 
+       <div className="space-y-4">
+@@ -254,8 +286,15 @@ export default function RulesToday() {
+       </div>
+ 
+       <div className="bg-amber-900/20 border border-amber-800 rounded-lg p-6 mt-8">
+-        <h3 className="font-bold text-amber-300 mb-2">📊 Coming Next: All 24 Content Types</h3>
+-        <p className="text-slate-300 text-sm">We're researching and adding rules for: Email newsletters, Podcast show notes, Webinar transcripts, FAQ pages, Twitter/X threads, Substack posts, Guest posts, Interviews, Infographics, Product docs, Comparison articles, Trend reports, and more.</p>
++        <h3 className="font-bold text-amber-300 mb-2">🔴 March 2026 Core Update — Key Signals</h3>
++        <p className="text-slate-300 text-sm mb-3">Rolling out since March 27. Here are the signals that matter most for AI visibility content:</p>
++        <ul className="space-y-1.5 text-sm text-slate-300">
++          <li><span className="text-amber-300 font-bold">1.</span> <span className="font-semibold">Comparative Value Filtering:</span> Google now evaluates how much NEW information a page adds vs. existing top results. Gemini 4.0 Semantic Filter is active.</li>
++          <li><span className="text-amber-300 font-bold">2.</span> <span className="font-semibold">E-E-A-T Experience Amplified:</span> Named authors with verifiable credentials and structured author pages outperform generic bylines.</li>
++          <li><span className="text-amber-300 font-bold">3.</span> <span className="font-semibold">AI Overviews on 82% of B2B Searches:</span> Up from 36% a year ago. Being cited in AI Overviews earns 35% more clicks than traditional ranking.</li>
++          <li><span className="text-amber-300 font-bold">4.</span> <span className="font-semibold">Schema = AI Trust Signal:</span> Sites with proper schema cited 3.2x more often. Schema now used by Gemini to verify claims, not just display rich results.</li>
++          <li><span className="text-amber-300 font-bold">5.</span> <span className="font-semibold">Citations ≠ Rankings:</span> Only 38% of AI Overview citations come from top-10 organic. 80% of LLM citations don't rank in Google's top 100.</li>
++        </ul>
+       </div>
+     </div>
+   )
+diff --git a/components/RulesWorkspace.tsx b/components/RulesWorkspace.tsx
+index ee308cc..c744e20 100644
+--- a/components/RulesWorkspace.tsx
++++ b/components/RulesWorkspace.tsx
+@@ -4,8 +4,9 @@ import { useState } from 'react'
+ 
+ // ─────────────────────────────────────────────
+ // AI VISIBILITY HUB — 10 Content Type Templates
+-// Rebuilt March 27, 2026. Every claim is sourced.
+-// See RESEARCH.md for full citation details.
++// Updated March 30, 2026. Includes Google March 2026 Core Update signals.
++// Gemini 3 AI Overviews, ChatGPT/Perplexity citation shifts, schema-as-trust-signal.
++// Every claim is sourced. See RESEARCH.md for full citation details.
+ //
+ // CONTENT TYPES:
+ // 1. Blog Posts
+@@ -1209,9 +1210,9 @@ const CONTENT_CATEGORIES: ContentCategory[] = [
+         subtitle: 'Owned media. Long-form articles drive the highest AI citation rate per format.',
+         badge: 'High Volume',
+         badgeColor: 'bg-blue-100 text-blue-800',
+-        keyStat: 'Articles dominate informational queries at 45.5% of all citations. "Best X" listicle-style blog posts account for 43.8% of ChatGPT citations specifically. Long-form blog content (500-2,000 words) generates the highest citation rate of any owned media format. (Wix Studio AI Search Lab + Ahrefs, March 2026)',
+-        keyStatSource: 'Wix Studio AI Search Lab + Ahrefs via Position.digital, March 2026',
+-        keyStatUrl: 'https://www.wix.com/studio/ai-search-lab/research/content-types-most-cited-by-llms',
++        keyStat: 'Articles dominate informational queries at 45.5% of all citations. ChatGPT only cites 15% of pages it retrieves — 44.2% of those citations come from the first 30% of text. Google\'s March 2026 Core Update now filters content that doesn\'t add comparative value vs. existing top results. Sites with original research saw ~22% visibility gains. Schema is now an AI trust signal (3.2x citation boost). (ALM Corp + Position.digital + Writesonic, March 2026)',
++        keyStatSource: 'ALM Corp + Position.digital + Writesonic, March 2026',
++        keyStatUrl: 'https://almcorp.com/blog/chatgpt-citations-study/',
+         copyTemplate: BLOG_TEMPLATE,
+         exampleTitle: 'Grata Blog: "How PE Firms Lose Deals They Never Knew Existed"',
+         exampleSource: 'Grata private company intelligence, PE sector',
+@@ -1263,9 +1264,14 @@ const CONTENT_CATEGORIES: ContentCategory[] = [
+           { text: 'FAQ section with 4 questions written as actual search queries', source: 'Frase.io FAQ Schema Research', sourceUrl: 'https://www.frase.io/blog/faq-schema-ai-search-geo-aeo' },
+           { text: 'Each FAQ answer is self-contained (complete without reading the article)', source: 'LLMRefs GEO Guide', sourceUrl: 'https://llmrefs.com/generative-engine-optimization' },
+           { text: 'Author name and title included (named authorship is E-E-A-T signal)', source: 'Semrush AI Optimization Guide, March 2026', sourceUrl: 'https://www.semrush.com/blog/how-to-optimize-content-for-ai-search-engines/' },
++          { text: '🔴 MARCH 2026: Named author with verifiable credentials + Schema.org Person markup (not "Editorial Team")', source: 'Google March 2026 Core Update — E-E-A-T Experience amplification', sourceUrl: 'https://www.digitalapplied.com/' },
++          { text: '🔴 MARCH 2026: Content adds comparative value — includes original data, unique perspective, or expert insight not in existing top results', source: 'Google March 2026 Core Update — Comparative Value Filtering', sourceUrl: 'https://searchengineland.com/' },
++          { text: '🔴 MARCH 2026: Article + FAQ schema (JSON-LD) with speakable property — schema is now AI trust signal (3.2x citation boost)', source: 'Digital Applied Schema Research, March 2026', sourceUrl: 'https://www.digitalapplied.com/blog/schema-markup-after-march-2026-structured-data-strategies' },
++          { text: '🔴 MARCH 2026: All dates aligned — dateline, datePublished in JSON-LD, and actual go-live date match', source: 'Google March 2026 Core Update — Recency signal', sourceUrl: 'https://searchengineland.com/' },
+           { text: 'Deep link to specific resource page (not homepage)', source: 'Stridec AI SEO Internal Linking', sourceUrl: 'https://www.stridec.com/blog/ai-seo-internal-linking-models/' },
+           { text: 'Average sentence length: 10-15 words', source: 'Notified AI Format Guide', sourceUrl: 'https://www.notified.com/resources/how-to-format-a-press-release-for-ai-search' },
+           { text: 'No hedge language: no "it depends," "may wish to," "in today\'s landscape"', source: 'LLMRefs GEO Guide', sourceUrl: 'https://llmrefs.com/generative-engine-optimization' },
++          { text: 'Passes Gemini 4.0 Semantic Filter — no repetitive AI phrasing, no content-at-scale patterns', source: 'Google March 2026 Core Update', sourceUrl: 'https://searchengineland.com/' },
+         ],
+       },
+     ],
+@@ -1280,8 +1286,8 @@ const CONTENT_CATEGORIES: ContentCategory[] = [
+         subtitle: '45.5% of informational query citations. Long-form authority format.',
+         badge: 'Most Cited (Info)',
+         badgeColor: 'bg-purple-100 text-purple-800',
+-        keyStat: 'Articles and editorial features capture 45.5% of all informational query citations. For informational intent, this format outperforms every other type. The earned media version (placed in third-party publications) generates 239% median lift in AI citation visibility over brand-owned equivalents (Stacker/Scrunch via AuthorityTech, March 2026).',
+-        keyStatSource: 'Wix Studio AI Search Lab + AuthorityTech citing Stacker/Scrunch, March 2026',
++        keyStat: 'Articles and editorial features capture 45.5% of all informational query citations. Google\'s March 2026 Core Update makes this format even stronger: it rewards editorial framing over announcement framing, named SME credentials, and content that adds comparative value. AI Overviews now appear on 82% of B2B tech searches (up from 36%). Sites cited in AI Overviews see 25-40% more clicks. Earned media generates 239% median lift over brand-owned equivalents.',
++        keyStatSource: 'Wix Studio + Google 2026 Data + AuthorityTech, March 2026',
+         keyStatUrl: 'https://www.wix.com/studio/ai-search-lab/research/content-types-most-cited-by-llms',
+         copyTemplate: PR_EDITORIAL_TEMPLATE,
+         exampleTitle: 'Grata AI Notice: "Full Market Visibility Is Crucial for Winning Deals"',
+@@ -1334,6 +1340,10 @@ const CONTENT_CATEGORIES: ContentCategory[] = [
+           { text: 'Numbered HOW IT WORKS section with 3-5 items', source: 'Ahrefs + LLMRefs GEO Guide', sourceUrl: 'https://www.position.digital/blog/ai-seo-statistics/' },
+           { text: '5 FAQ pairs at end, each question written as a literal buyer search query', source: 'Frase.io FAQ Schema Research', sourceUrl: 'https://www.frase.io/blog/faq-schema-ai-search-geo-aeo' },
+           { text: 'Each FAQ answer is self-contained (complete without reading the release)', source: 'LLMRefs GEO Guide', sourceUrl: 'https://llmrefs.com/generative-engine-optimization' },
++          { text: '🔴 MARCH 2026: Comparative value pre-check completed — wire adds first-party data, named expert perspective, or specific scenario not in current AI citations', source: 'Google March 2026 Core Update — Comparative Value Filtering', sourceUrl: 'https://searchengineland.com/' },
++          { text: '🔴 MARCH 2026: SME credential clause after first quote: "who has [specific experience]"', source: 'Google March 2026 Core Update — E-E-A-T Experience amplification', sourceUrl: 'https://www.digitalapplied.com/' },
++          { text: '🔴 MARCH 2026: All three dates aligned — "As of" dateline, JSON-LD datePublished, and GlobeNewswire go-live date', source: 'Google March 2026 Core Update — Recency alignment', sourceUrl: 'https://searchengineland.com/' },
++          { text: '🔴 MARCH 2026: Speakable schema property targeting bullet summary and FAQ sections', source: 'Google March 2026 Core Update — Schema as AI trust signal', sourceUrl: 'https://www.digitalapplied.com/blog/schema-markup-after-march-2026-structured-data-strategies' },
+           { text: 'Deep link in About section goes to specific page (not homepage)', source: 'Stridec AI SEO Internal Linking', sourceUrl: 'https://www.stridec.com/blog/ai-seo-internal-linking-models/' },
+           { text: 'Published on permanent newsroom URL, AI-crawlable (no paywall)', source: 'ACCESS Newswire + GlobeNewswire AI Era Guide', sourceUrl: 'https://www.newswire.com/news/access-newswire-report-press-release-distribution-has-entered-the-ai-era-and' },
+         ],
